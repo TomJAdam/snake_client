@@ -3,37 +3,23 @@ const connect = require('./client')
 console.log('Connecting...');
 connect();
 
-// const net = require('net');
-// const { stdin } = require('process');
+const handleUserinput = (key) => {
+  if (key === '\u0003') {
+    console.log('bye');
+    process.exit();
+  }
+};
 
-// const connect = function() {
-//   const conn = net.createConnection({
-//     host: 'localhost',
-//     port: 50541
-//   });
+const setupInput = function() {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding('utf8');
+  stdin.resume();
 
+  stdin.on('data', handleUserinput);
 
-//   // interpret incoming data as text
-// conn.setEncoding('utf8');
+  return stdin;
+}
 
-// conn.on('data', (data) => {
-//   console.log('Server says: ', data);
-// });
+setupInput();
 
-// conn.on('connect', () => {
-//   console.log('Successfully connected to game server');
-// })
-
-// conn.on('connection', (client) => {
-//   client.setEncoding('utf8'); // interpret data as text
-//   client.on('data', (data) => {
-//     console.log('Message from client: ', data)
-//   })
-// })
-
-
-
-// return conn;
-// };
-
-// module.exports = connect;
