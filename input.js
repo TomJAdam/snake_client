@@ -23,6 +23,14 @@ const handleUserinput = (key) => {
   if (key === 'd') {
     connection.write('Move: right');
   }
+
+  //messages
+  if (key === '1') {
+    connection.write('Say: SUP?');
+  }
+  if (key === '2') {
+    connection.write('Say: YOO!');
+  }
 };
 
 
