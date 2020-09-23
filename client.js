@@ -23,10 +23,6 @@ conn.on('connect', () => {
   conn.write('Name: TOM');
 });
 
-// conn.on('connect', () => {
-//   conn.write('Move: up')
-// })
-
 
 return conn;
 }
